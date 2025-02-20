@@ -6,11 +6,11 @@ import { v1 as uuid } from 'uuid';
 
 const getDiagnosis = (): Diagnosis[] => {
     return diagnosisData;
-}
+};
 
 const getPatients = (): Patients[] => {
     return patientsData;
-}
+};
 
 const getNonSensitiveEntries = (): NonSensitivePatientsEntry[] => {
     return patientsData.map(f => ({
@@ -20,20 +20,20 @@ const getNonSensitiveEntries = (): NonSensitivePatientsEntry[] => {
         occupation: f.occupation,
         dateOfBirth: f.dateOfBirth
     }));
-}
+};
 
 const createPatient = (data: NewPatientEntry): Patients => {
     const newPatientEntry = {
         id: uuid(),
         ...data
-    }
+    };
     patientsData.push(newPatientEntry);
     return newPatientEntry;
-}
+};
 
 export default {
     getDiagnosis,
     getPatients,
     getNonSensitiveEntries,
     createPatient
-}
+};

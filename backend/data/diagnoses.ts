@@ -1,5 +1,3 @@
-import { Diagnosis } from "../types/diagnosis";
-
 const diagnosisData = [
     {
         "code": "M24.2",

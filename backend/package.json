@@ -7,7 +7,8 @@
     "tsc": "tsc",
     "dev": "ts-node-dev index.ts",
     "lint": "eslint .",
-    "start": "node build/index.js"
+    "start": "node build/index.js",
+    "lint:fix": "eslint . --fix"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +26,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.2",
-    "uuid": "^11.0.5"
+    "uuid": "^11.0.5",
+    "zod": "^3.24.2"
   }
 }
