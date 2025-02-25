@@ -1,5 +1,5 @@
 import diagnosisData from "./data/diagnoses";
-import patientsData from "./data/patients";
+import patientsEntry, { patientsData } from "./data/patients";
 import { Diagnosis } from "./types/diagnosis";
 import { NewPatientEntry, NonSensitivePatientsEntry, Patients } from "./types/patientsType";
 import { v1 as uuid } from 'uuid';
@@ -9,7 +9,7 @@ const getDiagnosis = (): Diagnosis[] => {
 };
 
 const getPatients = (): Patients[] => {
-    return patientsData;
+    return patientsEntry;
 };
 
 const getNonSensitiveEntries = (): NonSensitivePatientsEntry[] => {
@@ -18,9 +18,17 @@ const getNonSensitiveEntries = (): NonSensitivePatientsEntry[] => {
         name: f.name,
         gender: f.gender,
         occupation: f.occupation,
-        dateOfBirth: f.dateOfBirth
+        dateOfBirth: f.dateOfBirth,
     }));
 };
+
+const getPatient = (id: string): Patients | null => {
+    const res = patientsData.find(f => f.id === id);
+    if (!res) {
+        return null;
+    }
+    return res;
+}
 
 const createPatient = (data: NewPatientEntry): Patients => {
     const newPatientEntry = {
@@ -35,5 +43,6 @@ export default {
     getDiagnosis,
     getPatients,
     getNonSensitiveEntries,
-    createPatient
+    createPatient,
+    getPatient
 };

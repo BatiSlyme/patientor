@@ -8,10 +8,10 @@ export const NewEntrySchema = z.object({
     ssn: z.string(),
     gender: z.nativeEnum(Gender),
     occupation: z.string(),
+    entries: z.array(z.any()).default([]) // Provide a default empty array
 });
 
 export const toNewPatientEntry = (object: unknown): NewPatientEntry => {
     console.log('NewEntrySchema.parse(object)', NewEntrySchema.parse(object));
-
     return NewEntrySchema.parse(object);
 };

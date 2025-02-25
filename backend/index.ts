@@ -21,6 +21,8 @@ app.get('/api/ping', (_req, res) => {
 });
 
 app.get('/api/diagnoses', (_req, res: Response<Diagnosis[]>) => {
+  console.log('calling diagnoses');
+
   res.send(services.getDiagnosis());
 });
 
