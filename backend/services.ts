@@ -39,20 +39,18 @@ const createPatient = (data: NewPatientEntry): Patients => {
     return newPatientEntry;
 };
 
-const addEntry = (id: string, data: EntryWithoutId[]): Entry[] | null => {
+const addEntry = (id: string, data: EntryWithoutId): Entry[] | null => {
     const person = patientsData.find(f => f.id === id);
     if (!person) {
         return null;
     }
-    const entryWithId = data.map(f => {
-        return {
-            id: uuid(),
-            ...f
-        }
-    });
+    const entryWithId = {
+        ...data,
+        id: uuid(),
+    };
 
-    person.entries.push(...entryWithId);
-    return entryWithId;
+    person.entries.push(entryWithId);
+    return person.entries;
 }
 
 export default {

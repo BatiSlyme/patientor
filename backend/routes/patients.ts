@@ -56,6 +56,8 @@ router.post('/', newPatientsParser, (req: Request<unknown, unknown, NewPatientEn
 });
 
 router.post('/:id/entries', newEntryParser, (_req, res: Response<Entry[] | string>) => {
+    console.log('trying to create patient');
+    
     const { id } = _req.params;
     const result = services.addEntry(id, _req.body);
     if (!result) {

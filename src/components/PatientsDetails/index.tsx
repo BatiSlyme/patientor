@@ -1,6 +1,6 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { TextField } from '@mui/material';
-import { Diagnosis, Patient } from '../../types';
+import { Diagnosis, Entry, Patient } from '../../types';
 import MaleIcon from '@mui/icons-material/Male';
 import FemaleIcon from '@mui/icons-material/Female';
 import Entries from './Entries';
@@ -20,7 +20,7 @@ const DisabledTextFields = (props: { children: ReactNode[] }) => {
 
 const PatientorDetails = (props: { patient: Patient | undefined, diagnoses: Diagnosis[] }) => {
     const { patient, diagnoses } = props;
-
+    // const [entries, setEntries] = useState<Entry[] | undefined>(patient ? patient.entries : []);
     if (!patient) return <div>...LOADING</div>;
 
     return (
@@ -39,7 +39,7 @@ const PatientorDetails = (props: { patient: Patient | undefined, diagnoses: Diag
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <h2>Gender:</h2> {patient.gender === 'male' ? <MaleIcon fontSize='large' /> : <FemaleIcon fontSize='large' />}
                 </div>
-                <Entries entries={patient.entries} diagnoses={diagnoses} />
+                <Entries setEntries={() => { }} entries={patient.entries} diagnoses={diagnoses} patientId={patient.id} />
             </div>
         </>
     )
